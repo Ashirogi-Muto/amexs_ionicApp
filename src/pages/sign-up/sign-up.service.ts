@@ -7,4 +7,10 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 
-export class SignUpService { }
+export class SignUpService {
+    constructor(private http: Http) { }
+
+    callSignUpApi() {
+        
+    }
+}

@@ -1,0 +1,36 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>Sign Up</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<h3>Sign Up</h3>
+	<form #signUp="ngForm">
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-input type="text" [(ngModel)]="userDetails.name" name="name" placeholder="Name" required></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-input type="text" [(ngModel)]="userDetails.mail" name="mail" placeholder="Mail ID" required></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-input type="password" [(ngModel)]="userDetails.password" name="password" placeholder="Password" required></ion-input>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col width-100>
+				<button ion-button  (click)="register()" type="submit" full>Sign Up</button>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col width-50>
+				<button ion-button (click)="backToLogin()" clear>Login</button>
+			</ion-col>
+		</ion-row>
+	</form>
+</ion-content>

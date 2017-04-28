@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { SignUpComponent } from '../sign-up/sign-up.component';
 
 @Component({
   selector: 'page-home',
@@ -11,7 +12,7 @@ export class HomePage {
   public admin = { id: "", password: "" };
   userLogin: boolean = true;
 
-  constructor(public navCtrl: NavController) {
+  constructor(private navCtrl: NavController) {
 
   }
 
@@ -31,8 +32,8 @@ export class HomePage {
     this.userLogin = true;
   }
 
-  signUp() {
-
+  goToSignUp() {
+    this.navCtrl.setRoot(SignUpComponent);
   }
 
 
