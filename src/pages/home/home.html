@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngIf="userLogin" class="userLogin">
+    <h3>Login</h3>
+    <form #userLogin="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-left:0px;">
+            <ion-input type="number" [(ngModel)]="user.mail" name="mail" placeholder="Email ID" required></ion-input>
+          </ion-item>
+
+          <ion-item style="padding-left:0px;">
+            <ion-input type="password" [(ngModel)]="user.password" name="password" placeholder="Password" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-100>
+          <button ion-button (click)="login()" full>Login</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-50>
+          <button ion-button (click)="signUp()" clear>Sign Up</button>
+        </ion-col>
+        <ion-col wodth-33 offset-20>
+          <button ion-button (click)="setAdminTrue()" clear>Login as Admin</button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+  <div *ngIf="!userLogin" class="adminLogin">
+    <h3>Admin Login</h3>
+    <form #userLogin="ngForm">
+      <ion-row>
+        <ion-col>
+          <ion-item style="padding-left:0px;">
+            <ion-input type="number" [(ngModel)]="admin.id" name="mail" placeholder="Admin ID" required></ion-input>
+          </ion-item>
+
+          <ion-item style="padding-left:0px;">
+            <ion-input type="password" [(ngModel)]="admin.password" name="password" placeholder="Password" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-100>
+          <button ion-button (click)="adminLogin()" full>Login</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-50>
+          <button ion-button (click)="setUserLoginTrue()" clear>Login as User</button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </div>
+</ion-content>
