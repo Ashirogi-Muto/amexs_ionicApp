@@ -1,0 +1,56 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+		<ion-title>Add Product</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<form #products="ngForm">
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-input type="text" [(ngModel)]="productDetails.uniqueProductId" name="unique_id" placeholder="Product Unique ID" required></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-input type="text" [(ngModel)]="productDetails.productName" name="product_name" placeholder="Product Name" required></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-input type="text" [(ngModel)]="productDetails.productDescription" name="product_desc" placeholder="Product Description"
+					 required></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-input type="text" [(ngModel)]="productDetails.productText" name="product_text" placeholder="Product Text" required></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-input type="number" [(ngModel)]="productDetails.productPrice" name="product_name" placeholder="Product Price" required></ion-input>
+				</ion-item>
+				<ion-row>
+					<ion-col width-100>
+						<p>Please upload a picture of your license plate for authentication of your ride.</p>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col width-33>
+						<button (click)="presentActionSheet()" ion-button small>Upload Image</button>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col *ngIf="imageBool">
+						<img alt="Product Image" [src]="domSanitize.bypassSecurityTrustUrl(base64ImageString)">
+					</ion-col>
+				</ion-row>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col width-100>
+				<button ion-button (click)="addProduct()" full>Add The Product</button>
+			</ion-col>
+		</ion-row>
+	</form>
+</ion-content>

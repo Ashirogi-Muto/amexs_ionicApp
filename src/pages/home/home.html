@@ -39,11 +39,11 @@
     <form #userLogin="ngForm">
       <ion-row>
         <ion-col>
-          <ion-item style="padding-left:0px;">
-            <ion-input type="number" [(ngModel)]="admin.id" name="mail" placeholder="Admin ID" required></ion-input>
+          <ion-item>
+            <ion-input type="number" [(ngModel)]="admin.id" name="admin_id" placeholder="Admin ID" required></ion-input>
           </ion-item>
 
-          <ion-item style="padding-left:0px;">
+          <ion-item>
             <ion-input type="password" [(ngModel)]="admin.password" name="password" placeholder="Password" required></ion-input>
           </ion-item>
         </ion-col>

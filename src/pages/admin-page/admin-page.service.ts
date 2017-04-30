@@ -6,7 +6,7 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 
-export class HomeService {
+export class AdminPageService {
     constructor(private http: Http) { }
     private headers: any;
     private options: any;
@@ -21,9 +21,9 @@ export class HomeService {
             str += key + "=" + encodeURIComponent(value);
         }, body);
         return str;
-    }                                                                                                                                                                                                                                                                           
+    }
 
-    callLoginApi(formData: Map<string, string>, url: string) {
+    callUploadProductApi(formData: Map<string, any>, url: string) {
         this.headers = new Headers({
             'Content-Type': 'application/x-www-form-urlencoded, multipart/form-data'
         });
@@ -36,6 +36,7 @@ export class HomeService {
             .catch(this.handleError);
     }
 
+    //angular methods
     private extractData(res: Response) {
         console.log(res);
         if (res.status < 200 || res.status >= 300) {
