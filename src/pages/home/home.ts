@@ -7,16 +7,18 @@ import { Storage } from '@ionic/storage';
 import { SignUpComponent } from '../sign-up/sign-up.component';
 import { HomeService } from './home.service';
 import { AdminPageComponent } from '../admin-page/admin-page.component'
+import { UserPageComponent } from '../user-page/user-page.component';
 
 @Component({
 	selector: 'page-home',
 	templateUrl: 'home.html'
 })
 export class HomePage {
-	public user = { mail: "", password: "" };
-	public admin = { id: "", password: "" };
-	userLogin: boolean = true;
-	private loginUrl: string = 'http://localhost/Amexs_API/controllers/Login.php';
+	public user = { mail: "", password: "" };//model for user
+	public admin = { id: "", password: "" };//model for admin
+	userLogin: boolean = true;//to display user login form
+
+	private loginUrl: string = 'http://hissaria.in/Amexs_API/controllers/Login.php';
 	constructor(private navCtrl: NavController, private homeService: HomeService, private loadingCtrl: LoadingController, private alertCtrl: AlertController, private storage: Storage) { }
 
 
@@ -32,6 +34,7 @@ export class HomePage {
 		this.homeService.callLoginApi(adminData, this.loginUrl)
 			.subscribe((response) => {
 				if (response.status_code === 1) {
+                    this.storage.set('login', true);
 					this.storage.set('login_mode', 'admin');
 					this.storage.set('admin_id', response.data.admin_id);
 					this.storage.set('admin_name', response.data.admin_name);
@@ -76,7 +79,7 @@ export class HomePage {
 					this.storage.set('user_id', response.data.user_id);
 					this.storage.set('user_name', response.data.user_name);
 					load.dismiss();
-					// this.navCtrl.setRoot()
+					this.navCtrl.setRoot(UserPageComponent);
 				}
 				if (response.status_code === 0) {
 					load.dismiss();

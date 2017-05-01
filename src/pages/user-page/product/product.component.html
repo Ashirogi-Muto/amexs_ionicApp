@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>View Product</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div *ngIf="couponFound">
+        <ion-card *ngFor="let product of singleProductData">
+            <ion-card-content>
+                <ion-row>
+                    <ion-col>
+                        <img [src]="domSanitize.bypassSecurityTrustUrl(product.product_image)" alt="product.product_name">
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <p>{{product.product_name}}</p>
+                    </ion-col>
+                    <ion-col>
+                        <p>{{product.product_descrip}}</p>
+                    </ion-col>
+                    <ion-col>
+                        <p>{{product.product_text}}</p>
+                    </ion-col>
+                    <ion-col>
+                        <p>{{product.product_price}}</p>
+                    </ion-col>
+                    <p>Apply Coupon?</p>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <div *ngIf="!couponFound">
+        <ion-card *ngFor="let product of singleProductData">
+            <ion-card-content>
+                <ion-row>
+                    <ion-col>
+                        <img [src]="domSanitize.bypassSecurityTrustUrl(product.product_image)" alt="product.product_name">
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <p>{{product.product_name}}</p>
+                    </ion-col>
+                    <ion-col>
+                        <p>{{product.product_descrip}}</p>
+                    </ion-col>
+                    <ion-col>
+                        <p>{{product.product_text}}</p>
+                    </ion-col>
+                    <ion-col>
+                        <p>{{product.product_price}}</p>
+                    </ion-col>
+                    <p>This product has no associated coupon</p>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

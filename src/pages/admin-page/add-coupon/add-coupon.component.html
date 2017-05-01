@@ -1,11 +1,36 @@
 <ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
+	<ion-navbar>
+		<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-        <ion-title>Add Coupon</ion-title>
-    </ion-navbar>
+		<ion-title>Add Coupon</ion-title>
+	</ion-navbar>
 </ion-header>
 <ion-content>
-    <h3>Add Coupon</h3>
+	<form #products="ngForm">
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-input type="text" [(ngModel)]="couponDetails.couponUniqueId" name="unique_id" autocomplete="true" placeholder="Coupon Unique ID"></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-input type="text" [(ngModel)]="couponDetails.couponName" name="coupon_name"  autocomplete="true" placeholder="Coupon Name"></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-input type="text" [(ngModel)]="couponDetails.couponProductId" name="coupon_product_id" autocomplete="true" placeholder="Coupon Product ID"></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<ion-input type="number" [(ngModel)]="couponDetails.couponReductionValue" name="coupon_reduction_value" autocomplete="true" placeholder="Coupon Reduction Value"></ion-input>
+				</ion-item>				
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col width-100>
+				<button ion-button (click)="addCoupon()" full>Add The Coupon</button>
+			</ion-col>
+		</ion-row>
+	</form>
 </ion-content>

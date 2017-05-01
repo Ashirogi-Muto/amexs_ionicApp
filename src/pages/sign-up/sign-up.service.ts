@@ -31,7 +31,7 @@ export class SignUpService {
             headers: this.headers
         });
 
-        return this.http.post('http://localhost/Amexs_API/controllers/SignUp.php', this.formatMapData(userData), this.options)
+        return this.http.post('http://hissaria.in/Amexs_API/controllers/SignUp.php', this.formatMapData(userData), this.options)
             .map(this.extractData)
             .catch(this.handleError);
     }

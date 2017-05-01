@@ -11,33 +11,27 @@
 		<ion-row>
 			<ion-col>
 				<ion-item>
-					<ion-input type="text" [(ngModel)]="productDetails.uniqueProductId" name="unique_id" placeholder="Product Unique ID" required></ion-input>
+					<ion-input type="text" [(ngModel)]="productDetails.uniqueProductId" name="unique_id" placeholder="Product Unique ID"></ion-input>
 				</ion-item>
 
 				<ion-item>
-					<ion-input type="text" [(ngModel)]="productDetails.productName" name="product_name" placeholder="Product Name" required></ion-input>
+					<ion-input type="text" [(ngModel)]="productDetails.productName" name="product_name" placeholder="Product Name"></ion-input>
 				</ion-item>
 
 				<ion-item>
-					<ion-input type="text" [(ngModel)]="productDetails.productDescription" name="product_desc" placeholder="Product Description"
-					 required></ion-input>
+					<ion-input type="text" [(ngModel)]="productDetails.productDescription" name="product_desc" placeholder="Product Description"></ion-input>
 				</ion-item>
 
 				<ion-item>
-					<ion-input type="text" [(ngModel)]="productDetails.productText" name="product_text" placeholder="Product Text" required></ion-input>
+					<ion-input type="text" [(ngModel)]="productDetails.productText" name="product_text" placeholder="Product Text"></ion-input>
 				</ion-item>
 
 				<ion-item>
-					<ion-input type="number" [(ngModel)]="productDetails.productPrice" name="product_name" placeholder="Product Price" required></ion-input>
+					<ion-input type="number" [(ngModel)]="productDetails.productPrice" name="product_name" placeholder="Product Price"></ion-input>
 				</ion-item>
-				<ion-row>
-					<ion-col width-100>
-						<p>Please upload a picture of your license plate for authentication of your ride.</p>
-					</ion-col>
-				</ion-row>
 				<ion-row>
 					<ion-col width-33>
-						<button (click)="presentActionSheet()" ion-button small>Upload Image</button>
+						<button class="upload-image" (click)="presentActionSheet()" ion-button small>Upload Image</button>
 					</ion-col>
 				</ion-row>
 				<ion-row>

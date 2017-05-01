@@ -11,7 +11,7 @@ export class AdminPageService {
     private headers: any;
     private options: any;
 
-    formatMapData(data) {
+    formatMapData(data) {//set the url for sending data
         let body = data;
         let str: string = "";
         body.forEach(function (value, key) {
@@ -23,7 +23,7 @@ export class AdminPageService {
         return str;
     }
 
-    callUploadProductApi(formData: Map<string, any>, url: string) {
+    setHeaders() {//set custom headers to send XML HTTP request
         this.headers = new Headers({
             'Content-Type': 'application/x-www-form-urlencoded, multipart/form-data'
         });
@@ -31,19 +31,28 @@ export class AdminPageService {
             headers: this.headers
         });
 
-        return this.http.post(url, this.formatMapData(formData), this.options)
+        return this.options;
+    }
+
+    callUploadProductApi(formData: Map<string, any>, url: string) {
+        return this.http.post(url, this.formatMapData(formData), this.setHeaders())
+            .map(this.extractData)//extract the data
+            .catch(this.handleError);//handle the errors
+    }
+
+    callUploadCouponApi(formData: Map<string, any>, url) {
+        return this.http.post(url, this.formatMapData(formData), this.setHeaders())
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     //angular methods
     private extractData(res: Response) {
-        console.log(res);
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
         }
-        let result = res.json();
-        return result || {};
+        let result = res.json();//convert the result to json object
+        return result;
     }
     private handleError(error: Response) {
         return Observable.throw(error.json() || 'Server error');

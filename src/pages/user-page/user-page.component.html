@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Home</ion-title>
+        <ion-buttons end>
+            <button (click)="logOut()" ion-button icon-only>
+                <ion-icon color="findIcon" name="log-out"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <div *ngFor="let product of productData" class="produts">
+        <ion-card (click)="goToProduct(product.product_id)">
+            <ion-card-content>
+                <ion-row>
+                    <ion-col width-33>
+                        <img [src]="domSanitize.bypassSecurityTrustUrl(product.product_image)" alt="product.product_name">
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <p>{{product.product_name}}</p>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col width-100>
+                        {{product.product_text}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col width-100>
+                        &#8377; {{product.product_price}}
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>
